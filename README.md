@@ -1,4 +1,4 @@
-Multi-Screen.js v1.2.2
+Multi-Screen.js v1.2.3
 ===============
 
 A simple, lightweight, and easy to use jQuery plugin which turns a single page into a collection of screens with animated navigation.
@@ -8,7 +8,7 @@ A simple, lightweight, and easy to use jQuery plugin which turns a single page i
 As per the MIT License, this software is free to use and edit by anyone for any purpose. If you use this plugin, please drop me a line and let me know what you used it for (www.ian-devries.com/?page=contact). Comments, notes for improvement, and ideas for new features are also always welcome.
 
 ## Setting up your page
-- Divide up the `<body>` of your HTML into `<div>` elements, giving them all the `ms-container` class (the plugin needs at least two to run), and build each screen inside. 
+- Divide up the `<body>` of your HTML into `<div>` elements, giving them all the `ms-container` class (the plugin needs at least two to run), and build each screen inside.
 - Give the element you want as your default screen the class `ms-default`. If no default is specified, the top `ms-container` will be used, and if more than one default is found the top `ms-default` will be used.
 - To facilitate navigation between screens, each one requires a unique `id` attribute.
 
@@ -43,7 +43,7 @@ To switch from one screen to another, simply give the class `ms-nav-link` to any
 ``` html
 <!-- default animations -->
 <a class="ms-nav-link" data-ms-target="welcome" href="javascript:void(0)">link</a>
- 
+
 <!-- specific animations -->
 <a class="ms-nav-link" data-ms-target="welcome" data-ms-animation="fadeleft" data-ms-vertical-distance="0" href="javascript:void(0)">link</a>
 <a class="ms-nav-link" data-ms-target="welcome" data-ms-exit-time="700" data-ms-enter-time="300" href="javascript:void(0)">link</a>
@@ -81,20 +81,20 @@ You can also navigate between screens within your own custom JavaScript code usi
 To specify the animation you want, the function recognizes the following properties in the `options` object:
 
 ``` js
-var options = {	
+var options = {
     target_id:                  // id of the target screen (REQUIRED)
     animation_command:          // must be a valid animation command
-	enter_animation_command:    // must be a valid animation command
-	exit_animation_command:     // must be a valid animation command
-	animation_time:             // milliseconds, must be an integer greater than 0
-	enter_animation_time:       // milliseconds, must be an integer greater than 0
-	exit_animation_time:        // milliseconds, must be an integer greater than 0
-	scroll_time:                // milliseconds, must be an integer greater than 0
-	delay:                      // must be a boolean
-	distance:                   // pixels, must be an integer (can be negative)
-	vertical_distance:          // pixels, must be an integer (can be negative), overrides distance
-	horizontal_distance:        // pixels, must be an integer (can be negative), overrides distance
-	chain_animation_options:    // options object for chaining navigations (see below)
+    enter_animation_command:    // must be a valid animation command
+    exit_animation_command:     // must be a valid animation command
+    animation_time:             // milliseconds, must be an integer greater than 0
+    enter_animation_time:       // milliseconds, must be an integer greater than 0
+    exit_animation_time:        // milliseconds, must be an integer greater than 0
+    scroll_time:                // milliseconds, must be an integer greater than 0
+    delay:                      // must be a boolean
+    distance:                   // pixels, must be an integer (can be negative)
+    vertical_distance:          // pixels, must be an integer (can be negative), overrides distance
+    horizontal_distance:        // pixels, must be an integer (can be negative), overrides distance
+    chain_animation_options:    // options object for chaining navigations (see below)
 }
 ```
 
@@ -110,9 +110,9 @@ The JavaScript code below will take the input from a textbox with the id `screen
 $('#navigate').click(function() {
 
    if (!MultiScreen.switch_screens({target_id: $('#screen-input').val()})) {
-   
+
         alert('Navigation failed!');
-   
+
    }
 
 });
@@ -124,7 +124,7 @@ When a link with the id `leap-over-center` is clicked, the JavaScript code below
 $('#leap-over-center').click(function() {
 
    MultiScreen.switch_screens({target_id: 'center-screen', chain_animation_options: {target_id: 'right_screen'}})) {
-   
+
 });
 ```
 
@@ -141,7 +141,7 @@ $('#leap-over-center').click(function() {
         <!-- link the css and js scripts -->
         <link href="multi-screen-css.css" type="text/css" rel="stylesheet"/>
         <script type="text/javascript" src="multi-screen.js"></script>
-        
+
         <!-- run the plugin -->
         <script type="text/javascript">$(document).ready(function() { MultiScreen.init(); });</script>
 </head>
@@ -165,7 +165,7 @@ Multi-Screen.js makes it easy to change the defaults for the animations, their t
     - `options` must be an object containing a value for each property to set (see below).
 
 You can also set the defaults by passing an object with properties into the `init' function when initializing the plugin:
-- `MultiScreen.init(Object options)` Initializes the plugin; 
+- `MultiScreen.init(Object options)` Initializes the plugin;
     - `options` must be an object containing a value for each property to set (see below) (OPTIONAL).
 
 ### Using an object to set the defaults
